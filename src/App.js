@@ -9,7 +9,10 @@ import {
 import {
   Select,
   Button,
-  Spin
+  Spin,
+  Table,
+  Divider,
+  Tag
 } from 'antd';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
@@ -69,7 +72,7 @@ function App() {
             const { data } = await axios.get(`${api_endpoints.lang}/${lang}`);
             const countries = []
             data.forEach(country => {
-              countries.push(country['alpha3Code']);
+              countries.push(country);
             });
             resolve(countries);
           }
@@ -87,6 +90,34 @@ function App() {
       })
     }
   }
+
+  const columns = [
+    {
+      title: 'Flag',
+      dataIndex: 'flag',
+      key: 'flag',
+      render: link => <img src={link} style={{ width: 20 }} />,
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Languages',
+      key: 'languages',
+      dataIndex: 'languages',
+      render: langs => (
+        <span>
+          {langs.map((language, i) =>
+              <Tag color={selectedLanguages.includes(language['iso639_1']) ? 'green' : ''} key={`lang${i}`}>
+                {language.name}
+              </Tag>
+          )}
+        </span>
+      ),
+    }
+  ];
 
   return (
     <div style={wrapperStyles}>
@@ -122,19 +153,19 @@ function App() {
                         data-tip={geography.properties.name}
                         style={{
                           default: {
-                            fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
+                            fill: selectedCountries.map(c => c["alpha3Code"]).includes(geography.id) ? "#00c42a" : "#ECEFF1",
                             stroke: "#607D8B",
                             strokeWidth: 0.75,
                             outline: "none",
                           },
                           hover: {
-                            fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
+                            fill: selectedCountries.map(c => c["alpha3Code"]).includes(geography.id) ? "#00c42a" : "#ECEFF1",
                             stroke: "#607D8B",
                             strokeWidth: 0.75,
                             outline: "none",
                           },
                           pressed: {
-                            fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
+                            fill: selectedCountries.map(c => c["alpha3Code"]).includes(geography.id) ? "#00c42a" : "#ECEFF1",
                             stroke: "#607D8B",
                             strokeWidth: 0.75,
                             outline: "none",
@@ -147,6 +178,11 @@ function App() {
               </Geographies>
             </ZoomableGroup>
           </ComposableMap>
+        </div>
+      }
+      {selectedCountries.length &&
+        <div style={{ marginTop: 25, padding: 25 }}>
+          <Table columns={columns} dataSource={selectedCountries} />
         </div>
       }
       <ReactTooltip />
