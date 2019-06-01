@@ -36,12 +36,4 @@
       "last 1 safari version"
     ]
   },
-  "guppy": {
-    "id": "fee347e0-840d-11e9-b821-eba86024f976",
-    "name": "Language Survival",
-    "type": "create-react-app",
-    "icon": "./static/media/icon_gradient4.c5cddacd.png",
-    "color": "#C51162",
-    "createdAt": 1559353125728
-  }
 }
