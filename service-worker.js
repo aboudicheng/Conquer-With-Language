@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Conquer-With-Language/precache-manifest.b1aa2038a4566a8e6c8dd4ce3a6122e9.js"
+  "/Conquer-With-Language/precache-manifest.3d02e4cbb8e6f4491a959e15ae8e7569.js"
 );
 
 self.addEventListener('message', (event) => {

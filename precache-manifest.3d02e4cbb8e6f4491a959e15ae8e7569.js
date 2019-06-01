@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3912860a4234fab7670a538211dbad92",
+    "revision": "338334715f291005b29c963087afc696",
     "url": "/Conquer-With-Language/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Conquer-With-Language/static/js/2.d683c8d9.chunk.js"
   },
   {
-    "revision": "3fa947a873d112170171",
-    "url": "/Conquer-With-Language/static/js/main.dce71e49.chunk.js"
+    "revision": "e90142d6e8e26d3927b1",
+    "url": "/Conquer-With-Language/static/js/main.224b71b0.chunk.js"
   },
   {
     "revision": "90a4b0acb36177fa1c5c",
