@@ -36,4 +36,8 @@
       "last 1 safari version"
     ]
   },
+  "guppy": {
+    "name": "Conquer With Language",
+    "icon": "./static/media/icon_gradient4.c5cddacd.png"
+  }
 }
