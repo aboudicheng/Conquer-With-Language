@@ -11,7 +11,6 @@ import {
   Button,
   Spin,
   Table,
-  Divider,
   Tag
 } from 'antd';
 import ReactTooltip from 'react-tooltip';
@@ -96,7 +95,7 @@ function App() {
       title: 'Flag',
       dataIndex: 'flag',
       key: 'flag',
-      render: link => <img src={link} style={{ width: 20 }} />,
+      render: link => <img src={link} style={{ width: 20 }} alt="flag" />,
     },
     {
       title: 'Name',
