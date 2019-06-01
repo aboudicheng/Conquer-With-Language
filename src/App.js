@@ -38,6 +38,12 @@ function App() {
     console.log(selectedCountries)
   }, [selectedCountries])
 
+  useEffect(() => {
+    setTimeout(() => {
+      ReactTooltip.rebuild()
+    }, 100)
+  }, [])
+
   function handleMove(geography, evt) {
     const x = evt.clientX
     const y = evt.clientY + window.pageYOffset
@@ -97,7 +103,7 @@ function App() {
       <div style={{ textAlign: "center" }}>
         {!loading &&
           <ComposableMap>
-            <ZoomableGroup>
+            <ZoomableGroup disablePanning>
               <Geographies geography={world}>
                 {(geographies, projection) => {
                   return geographies.map((geography, i) => {
@@ -108,8 +114,9 @@ function App() {
                         projection={projection}
                         onMouseMove={handleMove}
                         onMouseLeave={handleLeave}
-                        data-tip={hoverCountry}
-                        data-for={'countryTooltip'}
+                        data-tip={geography.properties.name}
+                        //data-tip={hoverCountry}
+                        //data-for={'countryTooltip'}
                         style={{
                           default: {
                             fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
@@ -118,13 +125,13 @@ function App() {
                             outline: "none",
                           },
                           hover: {
-                            fill: "#607D8B",
+                            fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
                             stroke: "#607D8B",
                             strokeWidth: 0.75,
                             outline: "none",
                           },
                           pressed: {
-                            fill: "#FF5722",
+                            fill: selectedCountries.includes(geography.id) ? "#00c42a" : "#ECEFF1",
                             stroke: "#607D8B",
                             strokeWidth: 0.75,
                             outline: "none",
@@ -140,7 +147,7 @@ function App() {
           </ComposableMap>
         }
       </div>
-      <ReactTooltip id='countryTooltip' />
+      <ReactTooltip />
     </div>
   );
 }
