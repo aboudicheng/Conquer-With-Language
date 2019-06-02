@@ -124,7 +124,7 @@ function App() {
         <Select
           mode="multiple"
           placeholder="Choose any language"
-          style={{ width: 400, marginRight: 15 }}
+          style={{ minWidth: 200, width: "100%", maxWidth: 400, marginRight: 15, marginBottom: 15 }}
           onChange={handleLangChange}
           filterOption={(input, option) =>
             option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -179,8 +179,9 @@ function App() {
           </ComposableMap>
         </div>
       }
-      {selectedCountries.length &&
+      {selectedCountries.length !== 0 &&
         <div style={{ marginTop: 25, padding: 25 }}>
+          <h1>Number of countries & regions included: {selectedCountries.length}</h1>
           <Table columns={columns} dataSource={selectedCountries} />
         </div>
       }
